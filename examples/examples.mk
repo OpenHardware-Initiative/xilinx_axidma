@@ -17,8 +17,7 @@ include library/library.mk
 
 # The list of example programs
 EXAMPLES_DIR = examples
-EXAMPLES_FILES = axidma_benchmark.c axidma_display_image.c axidma_transfer.c
-
+EXAMPLES_FILES = axidma_benchmark.c axidma_display_image.c axidma_transfer.c axidma_single.c dma_debug.c axi_example.c
 # The variations of specific targets for the example programs
 EXAMPLES_TARGETS = $(EXAMPLES_FILES:%.c=%)
 EXAMPLES_CLEAN_TARGETS = $(addsuffix _clean,$(EXAMPLES_TARGETS))

@@ -143,7 +143,7 @@ static struct axidma_chan *axidma_get_chan(struct axidma_device *dev,
 static void axidma_dma_callback(void *data)
 {
     struct axidma_cb_data *cb_data;
-    struct siginfo sig_info;
+    struct kernel_siginfo sig_info;
 
     /* For synchronous transfers, notify the kernel thread waiting. For
      * asynchronous transfers, send a signal to userspace if requested. */
@@ -672,7 +672,8 @@ int axidma_dma_init(struct platform_device *pdev, struct axidma_device *dev)
     size_t elem_size;
     u64 dma_mask;
 
-    dma_mask = DMA_BIT_MASK(8 * sizeof(dma_addr_t));
+    dma_mask = DMA_BIT_MASK(32);
+    //dma_mask = DMA_BIT_MASK(8 * sizeof(dma_addr_t));
     rc = dma_set_coherent_mask(&dev->pdev->dev, dma_mask);
     if (rc < 0) {
         axidma_err("Unable to set the DMA coherent mask.\n");
