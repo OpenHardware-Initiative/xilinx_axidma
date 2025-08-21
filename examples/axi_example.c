@@ -102,7 +102,7 @@ int main(int argc, char **argv)
     }
 
     // --- 6. Print Result ---
-    printf("Received: 0x%08x\n", *rx_buf);
+    printf("Received: 0x%08x\n", *tx_buf);
 
     // --- 7. Cleanup ---
 free_rx_buf:
