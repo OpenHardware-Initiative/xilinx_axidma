@@ -89,13 +89,13 @@ int main(int argc, char **argv)
     *tx_buf = tx_val;
     
     // Initialize receive buffer to a known value to ensure it gets overwritten
-    *rx_buf = 0;
+    *rx_buf = 3;
 
-    printf("Sending:  0x%08x\n", *tx_buf);
+    printf("Sending:  0x%08x\n", *rx_buf);
 
     // Perform the two-way transfer
-    rc = axidma_twoway_transfer(axidma_dev, tx_channel, rx_buf, sizeof(uint32_t), NULL,
-                                rx_channel, tx_buf, sizeof(uint32_t), NULL, true);
+    rc = axidma_twoway_transfer(axidma_dev, rx_channel, rx_buf, sizeof(uint32_t), NULL,
+                                tx_channel, tx_buf, sizeof(uint32_t), NULL, true);
     if (rc < 0) {
         fprintf(stderr, "Error: DMA transfer failed.\n");
         goto free_rx_buf;
